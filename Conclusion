@@ -1,0 +1,24 @@
+Drawing Conclusions
+Use the space below to address questions on datasets clean_08.csv and clean_18.csv. You should've created these data files in the previous section: Fixing Data Types Pt 3.
+
+# load datasets
+import pandas as pd
+import numpy as np
+% matplotlib inline
+df_08 = pd.read_csv('clean_08.csv')
+df_18 = pd.read_csv('clean_18.csv')
+Q1: Are more unique models using alternative sources of fuel? By how much?
+df_08.fuel.value_counts()
+Gasoline    983
+ethanol       2
+gas           2
+CNG           1
+Name: fuel, dtype: int64
+df_18.fuel.value_counts()
+Gasoline    761
+Ethanol      52
+Diesel       19
+Name: fuel, dtype: int64
+alt_08 = df_08.query('fuel in ["CNG", "ethanol"]').model.nunique()
+alt_08
+2
